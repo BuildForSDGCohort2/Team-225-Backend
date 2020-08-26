@@ -25,8 +25,6 @@ Route::group(['prefix' => 'auth'], function() {
 });
 
 // Protected routes
-Route::group(['middleware' => 'auth:api'], function() {
-    Route::get('/test', function() {
-        return response()->json(['msg' => 'success']);
-    });
+Route::group(['middleware' => 'auth:api', 'prefix' => 'auth'], function() {
+    Route::get('/logout', 'API\LogoutController@logout');
 });
