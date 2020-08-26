@@ -65,7 +65,7 @@ class LoginController extends Controller
      */
     private function validator(Request $request)
     {
-        return FacadesValidator::make($request->all(), [
+        return FacadesValidator::make($request->only(['email', 'password']), [
             'email' => 'email|required',
             'password' => 'required|min:8'
         ]);

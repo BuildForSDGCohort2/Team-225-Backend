@@ -65,7 +65,7 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     private function validator(Request $request) {
-        return FacadesValidator::make($request->all(), [
+        return FacadesValidator::make($request->only(['name', 'email', 'password']), [
             'name' => 'required',
             'email' => 'email|required',
             'password' => 'required|min:8'
