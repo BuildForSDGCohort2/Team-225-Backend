@@ -9,7 +9,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="/assets/css/bootstrap.css">
-        <link rel="stylesheet" href="/assets/styles/default.css">
+        <link rel="stylesheet" href="/assets/css/default.css">
         <link rel="stylesheet" href="/assets/css/styles.css">
 
         <!-- Styles -->
