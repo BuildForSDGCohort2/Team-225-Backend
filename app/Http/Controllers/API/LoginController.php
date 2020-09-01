@@ -35,6 +35,7 @@ class LoginController extends Controller
                     'success' => true,
                     'data' => [
                         'user' => $user,
+                        'message' => 'User logged in successfully',
                         'token' => $token
                     ]
                 ]);
