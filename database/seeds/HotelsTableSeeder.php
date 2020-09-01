@@ -16,9 +16,9 @@ class HotelsTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
         for ($i=0; $i < 10 ; $i++) { 
         	Hotel::create([
-        		'hotel_name'=>$faker->sentence,
-        		'description'=>$faker->paragraph,
-        		'price'=>100
+        		'hotel_name' => $faker->sentence,
+        		'description' => $faker->paragraph,
+        		'price' => 100
         	]);
         }
     }

@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'auth'], function() {
     Route::get('/logout', 'API\LogoutController@logout');
 });
 
-//hotels crud
+//hotels crud routes
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('hotels', 'HotelsController@getAllHotels');
 	Route::get('hotels/{id}', 'HotelsController@getHotel');

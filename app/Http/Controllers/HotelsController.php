@@ -10,7 +10,7 @@ class HotelsController extends Controller
     //
     public function getAllHotels()
     {
-         $hotels = Hotel::get()->toJson(JSON_PRETTY_PRINT);
+        $hotels = Hotel::get()->toJson(JSON_PRETTY_PRINT);
         return response($hotels, 200);
     }
 
@@ -31,15 +31,17 @@ class HotelsController extends Controller
     {
         //validate new hotel
          $request->validate([
-           'hotel_name'=>'required',
-                'description'=>'required',
-                'price'=>'required|numeric'  
+                'hotel_name' => 'required',
+                'description' => 'required',
+                'price' => 'required|numeric'  
             ]);
+
          $formdata = array(
-            'hotel_name'=>$request->hotel_name,
-            'description'=>$request->description,
+            'hotel_name' => $request->hotel_name,
+            'description' => $request->description,
             'price'=>$request->price
             );
+
          if (Hotel::create($formdata)) {
               return response()->json([
             "message" => "Hotel created"
@@ -52,7 +54,7 @@ class HotelsController extends Controller
     public function updateHotel(Request $request, $id)
     {
         //
-        $hotel= Hotel::whereid($id)->firstOrFail();
+        $hotel = Hotel::whereid($id)->firstOrFail();
 
         $request->validate([
             'hotel_name'=>'required',
@@ -71,9 +73,9 @@ class HotelsController extends Controller
         ], 200);
 
     }
-    public function deleteHotel(Request $request, $id)
+    public function deleteHotel($id)
     {
-         $hotel = Hotel::findOrFail($id);
+        $hotel = Hotel::findOrFail($id);
         $hotel->delete();
 
         return response()->json([
