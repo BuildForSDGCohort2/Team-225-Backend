@@ -53,7 +53,7 @@ class RegisterController extends Controller
             return response()->json([
                 'success' => false,
                 'data' => [
-                    'errors' => 'Registration failed, please try again: '.$e->getMessage()
+                    'errors' => 'Registration failed, please try again'
                 ]
                 ], 500);
         }
