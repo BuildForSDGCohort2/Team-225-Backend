@@ -70,15 +70,168 @@
 </code>
 </pre>
 <p>It has the same response as the register endpoint</p>
-                        </div>
-                        <hr>
-                        <div class="api-section">
-                            <h3>Hotels API</h3>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
+</div>
+<hr>
+<h3>Hotels API</h3>
+<p>We are going to use this Api while listing all hotels, get a single hotel, add a hotel and also delete a hotel</p>
+<h4>1. Create a hotel </h4>
+<pre>
+<code>
+url: https://zurri-booking.herokuapp.com/api/hotels/
+method: POST
+Form param:"hotel_name", "description", "price", "district", "email", "address", "contact"
+</code>
+</pre>
+<p>Response</p>
+<pre>
+<code>
+   {
+    "success": true,
+    "data": {
+        "message": "hotel successfully deleted",
+        "hotel": {
+            "id": "id",
+            "hotel_name": "hotel_name",
+            "description": "description",
+            "price": "price",
+            "district": "district",
+            "email": "email",
+            "address": "address",
+            "contact": "contact",
+            "created_at": "created_at",
+            "updated_at": "updated_at"
+        }
+    }
+}
+</code>
+</pre>
+</pre>
+<p>The email and contact are not required fields, but the rest are required</p>
+<h4>2. Show all hotels</h4>
+<pre>
+<code>
+url: https://zurri-booking.herokuapp.com/api/hotels
+method: GET
+param:
+</code>
+</pre>
+<p>Response</p>
+<pre>
+<code>
+        {
+"success": true,
+"data": {
+    "hotels": [
+        {
+            "id": "hotel_id",
+            "hotel_name": "hotel name",
+            "description": "hotel description",
+            "price": "price",
+            "district": "district",
+            "email": "email",
+            "address": "address",
+            "contact": "contact",
+            "created_at": "created_at",
+            "updated_at": "updated_at"
+        },
+         "count": "number of hotels"
+]
+</code>
+</pre>
+<h4>3.Show a single hotel </h4>
+<pre>
+<code>
+url: https://zurri-booking.herokuapp.com/api/hotels/{id}
+method: GET
+param:id
+</code>
+</pre>
+<p>Response</p>
+<pre>
+<code>
+    {
+    "success": true,
+    "data": {
+        "id": 7,
+        "hotel_name": "hotel_name",
+        "description": "description",
+        "price":  "price",
+        "district": "district",
+        "email": "email",
+        "address": "address",
+        "contact": "contact",
+        "created_at": "created_at",
+        "updated_at": "updated_at"
+    }
+}
+</code>
+</pre>
+<h4>4.Update  a single hotel </h4>
+<pre>
+<code>
+url: https://zurri-booking.herokuapp.com/api/hotels/{id}
+method: PUT
+param:id
+</code>
+</pre>
+<p>Response</p>
+<pre>
+<code>
+   {
+    "success": true,
+    "data": {
+        "message": "hotel updated successfully",
+        "hotel": {
+            "id": 7,
+            "hotel_name": "hotel_name",
+            "description": "description",
+            "price": "price",
+            "district": "district",
+            "email": "email",
+            "address": "address",
+            "contact": "contact",
+            "created_at": "created_at",
+            "updated_at": "updated_at"
+        }
+    }
+}
+</code>
+</pre>
+<h4>5.Delete  a single hotel </h4>
+<pre>
+<code>
+url: https://zurri-booking.herokuapp.com/api/hotels/{id}
+method: DELETE
+param:id
+</code>
+</pre>
+<p>Response</p>
+<pre>
+<code>
+   {
+    "success": true,
+    "data": {
+        "message": "hotel successfully deleted",
+        "hotel": {
+            "id": "id",
+            "hotel_name": "hotel_name",
+            "description": "description",
+            "price": "price",
+            "district": "district",
+            "email": "email",
+            "address": "address",
+            "contact": "contact",
+            "created_at": "created_at",
+            "updated_at": "updated_at"
+        }
+    }
+}
+</code>
+</pre>
+</div>
+</div>
+</section>
+ </main>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js" integrity="sha512-tHQeqtcNWlZtEh8As/4MmZ5qpy0wj04svWFK7MIzLmUVIzaHXS8eod9OmHxyBL1UET5Rchvw7Ih4ZDv5JojZww==" crossorigin="anonymous"></script>
     <script>hljs.initHighlightingOnLoad();</script>
