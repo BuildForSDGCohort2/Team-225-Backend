@@ -53,7 +53,7 @@ class LoginController extends Controller
             return response()->json([
                 'success' => false,
                 'data' => [
-                    'errors' => 'Login failed, please try again'
+                    'errors' => 'Login failed, please try again: '.$e->getMessage()
                 ]
             ], 500);
         }
