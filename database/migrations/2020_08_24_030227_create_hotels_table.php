@@ -17,11 +17,13 @@ class CreateHotelsTable extends Migration
             $table->id();
             $table->string('hotel_name');
             $table->text('description');
-            $table->bigInteger('price');
+            $table->bigInteger('average_price');
             $table->string('district');
             $table->string('email')->nullable();
+            $table->string('web')->nullable();
             $table->string('contact')->nullable();
             $table->string('address');
+            $table->integer('number_of_rooms')->nullable();
             $table->timestamps();
         });
     }

@@ -4,16 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Hotel extends Model
+class Room extends Model
 {
-    //
-    protected $guarded = [];
-
-    public function rooms() {
-        return $this->hasMany('App\Rooms');
+    public function hotel() {
+        return $this->belongsTo('App\Hotel');
     }
 
     public function images() {
         return $this->morphMany('App\Image', 'imageable');
     }
+
 }
