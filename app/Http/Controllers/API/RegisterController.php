@@ -27,7 +27,7 @@ class RegisterController extends Controller
                     'data' => [
                         'errors' => $validator->errors()
                     ]
-                ]);
+                    ], 400);
             }
 
             $data = $validator->validated();
@@ -47,7 +47,7 @@ class RegisterController extends Controller
                     'message' => 'User registered successfully',
                     'token' => $token
                 ]
-            ]);
+                ], 201);
         } catch (\Exception $e) {
             Log::error('An error occured while trying to register a user: ' . $e->getMessage());
             return response()->json([

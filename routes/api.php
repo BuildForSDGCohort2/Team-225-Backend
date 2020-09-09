@@ -36,7 +36,10 @@ Route::group(['middleware' => 'auth:api'], function() {
 	Route::get('hotels/{id}', 'API\HotelsController@getHotel');
 	Route::post('hotels', 'API\HotelsController@createHotel');
 	Route::put('hotels/{id}', 'API\HotelsController@updateHotel');
-	Route::delete('hotels/{id}','API\HotelsController@deleteHotel');
+    Route::delete('hotels/{id}','API\HotelsController@deleteHotel');
+    
+    // Images operations
+    Route::post('/hotels/add-images/{hotel}', 'API\ImageController@addHotelImages');
 });
 
 // Documentation

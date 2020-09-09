@@ -21,7 +21,7 @@ class LoginController extends Controller
                     'data' => [
                         'errors' => $validator->errors()
                     ]
-                ]);
+                    ], 400);
             }
 
             $data = $validator->validated();
@@ -46,7 +46,7 @@ class LoginController extends Controller
                 'data' => [
                     'errors' => 'Invalid Credentials'
                 ]
-            ]);
+                ], 400);
 
         } catch (\Exception $e) {
             Log::error('An error occured while trying to authenticate the user: ' . $e->getMessage());

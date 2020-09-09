@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Zurri Booking | Documentation</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="/assets/css/bootstrap.css">
-        <link rel="stylesheet" href="/assets/css/default.css">
-        <link rel="stylesheet" href="/assets/css/styles.css">
-
-        <!-- Styles -->
-        <style>
-            
-        </style>
-    </head>
-    <body>
-        <main>
+<x-app>
+    <main>
             <nav class="custom-nav text-center">
                 <div class="container">
                     <a class="brand" href="/">Zurri Booking API Documentation</a>
@@ -79,7 +60,8 @@
 <code>
 url: https://zurri-booking.herokuapp.com/api/hotels/
 method: POST
-Form param:"hotel_name", "description", "price", "district", "email", "address", "contact"
+Form param:"hotel_name", "description", "average_price", "district", "email", "address", "contact", "web", "number_of_rooms"
+Optional params: "web", "number_of_rooms"
 </code>
 </pre>
 <p>Response</p>
@@ -93,9 +75,11 @@ Form param:"hotel_name", "description", "price", "district", "email", "address",
             "id": "id",
             "hotel_name": "hotel_name",
             "description": "description",
-            "price": "price",
+            "average_price": "Average price for a room in the hotel",
             "district": "district",
             "email": "email",
+            "web": "web address",
+            "number_of_rooms": "Total number of rooms in the hotel",
             "address": "address",
             "contact": "contact",
             "created_at": "created_at",
@@ -126,20 +110,22 @@ param:
             "id": "hotel_id",
             "hotel_name": "hotel name",
             "description": "hotel description",
-            "price": "price",
+            "average_price": "Average price for a room in the hotel",
             "district": "district",
             "email": "email",
+            "web": "web address",
+            "number_of_rooms": "Total number of rooms in the hotel",
             "address": "address",
             "contact": "contact",
             "created_at": "created_at",
             "updated_at": "updated_at"
         },
+<pre>
          "count": "number of hotels"
 ]
 </code>
 </pre>
 <h4>3.Show a single hotel </h4>
-<pre>
 <code>
 url: https://zurri-booking.herokuapp.com/api/hotels/{id}
 method: GET
@@ -155,9 +141,11 @@ param:id
         "id": 7,
         "hotel_name": "hotel_name",
         "description": "description",
-        "price":  "price",
+        "average_price": "Average price for a room in the hotel",
         "district": "district",
         "email": "email",
+        "web": "web address",
+        "number_of_rooms": "Total number of rooms in the hotel",
         "address": "address",
         "contact": "contact",
         "created_at": "created_at",
@@ -185,9 +173,11 @@ param:id
             "id": 7,
             "hotel_name": "hotel_name",
             "description": "description",
-            "price": "price",
+            "average_price": "Average price for a room in the hotel",
             "district": "district",
             "email": "email",
+            "web": "web address",
+            "number_of_rooms": "Total number of rooms in the hotel",
             "address": "address",
             "contact": "contact",
             "created_at": "created_at",
@@ -216,9 +206,11 @@ param:id
             "id": "id",
             "hotel_name": "hotel_name",
             "description": "description",
-            "price": "price",
+            "average_price": "Average price for a room in the hotel",
             "district": "district",
             "email": "email",
+            "web": "web address",
+            "number_of_rooms": "Total number of rooms in the hotel",
             "address": "address",
             "contact": "contact",
             "created_at": "created_at",
@@ -232,7 +224,4 @@ param:id
 </div>
 </section>
  </main>
-    </body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js" integrity="sha512-tHQeqtcNWlZtEh8As/4MmZ5qpy0wj04svWFK7MIzLmUVIzaHXS8eod9OmHxyBL1UET5Rchvw7Ih4ZDv5JojZww==" crossorigin="anonymous"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-</html>
+</x-app>
