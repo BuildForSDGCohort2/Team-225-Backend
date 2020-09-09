@@ -83,7 +83,7 @@ class HotelsController extends Controller
                     'message' => 'failed to create hotel',
                     'errors' => $validatedData->errors()
                 ]
-            ]);
+                ], 400);
          };
 
          $formdata = $validatedData->validated();
@@ -125,7 +125,7 @@ class HotelsController extends Controller
                         'message' => 'failed to update hotel',
                         'errors' => $validatedData->errors()
                     ]
-                ]);
+                    ], 400);
             }
 
             $hotel->hotel_name = $request->get('hotel_name');
