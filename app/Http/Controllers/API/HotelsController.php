@@ -183,14 +183,16 @@ class HotelsController extends Controller
 
     private function validator(Request $request) {
 
+    
         return Validator::make($request->only(['hotel_name', 'description', 'average_price', 'address', 'district', 'contact', 'email']), [
+
             'hotel_name' => 'required',
             'description' => 'required',
             'average_price' => 'required|numeric',
             'email' => 'email',
             'district' => 'required',
             'address' => 'required',
-            'contact' => 'min:10'
+            'contact' => 'min:10',
         ]);
 
     }

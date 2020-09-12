@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
+  	protected $fillable = ['hotel_id', 'price', 'name'];
+
     public function hotel() {
         return $this->belongsTo('App\Hotel');
     }
