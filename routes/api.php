@@ -44,6 +44,3 @@ Route::group(['middleware' => 'auth:api'], function() {
 
 // Documentation
 Route::get('/', 'API\DocumentationController@index');
-
-
-
