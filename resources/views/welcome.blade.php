@@ -60,12 +60,9 @@
 <code>
 url: https://zurri-booking.herokuapp.com/api/hotels/
 method: POST
-<<<<<<< HEAD
-Form param:"hotel_name", "description", "price", "district", "email", "address", "contact"
-=======
 Form param:"hotel_name", "description", "average_price", "district", "email", "address", "contact", "web", "number_of_rooms"
 Optional params: "web", "number_of_rooms"
->>>>>>> develop
+
 </code>
 </pre>
 <p>Response</p>
@@ -117,35 +114,30 @@ param:
             "id": "hotel_id",
             "hotel_name": "hotel name",
             "description": "hotel description",
-<<<<<<< HEAD
+
             "price": "price",
             "district": "district",
             "email": "email",
-=======
+
             "average_price": "Average price for a room in the hotel",
             "district": "district",
             "email": "email",
             "web": "web address",
             "number_of_rooms": "Total number of rooms in the hotel",
->>>>>>> develop
             "address": "address",
             "contact": "contact",
             "created_at": "created_at",
             "updated_at": "updated_at"
         },
-<<<<<<< HEAD
-=======
-<pre>
->>>>>>> develop
+
          "count": "number of hotels"
 ]
+}
+</pre>
 </code>
 </pre>
 <h4>3.Show a single hotel </h4>
-<<<<<<< HEAD
 <pre>
-=======
->>>>>>> develop
 <code>
 url: https://zurri-booking.herokuapp.com/api/hotels/{id}
 method: GET
@@ -161,17 +153,15 @@ param:id
         "id": 7,
         "hotel_name": "hotel_name",
         "description": "description",
-<<<<<<< HEAD
         "price":  "price",
         "district": "district",
         "email": "email",
-=======
         "average_price": "Average price for a room in the hotel",
         "district": "district",
         "email": "email",
         "web": "web address",
         "number_of_rooms": "Total number of rooms in the hotel",
->>>>>>> develop
+
         "address": "address",
         "contact": "contact",
         "created_at": "created_at",
@@ -199,17 +189,14 @@ param:id
             "id": 7,
             "hotel_name": "hotel_name",
             "description": "description",
-<<<<<<< HEAD
             "price": "price",
             "district": "district",
             "email": "email",
-=======
             "average_price": "Average price for a room in the hotel",
             "district": "district",
             "email": "email",
             "web": "web address",
             "number_of_rooms": "Total number of rooms in the hotel",
->>>>>>> develop
             "address": "address",
             "contact": "contact",
             "created_at": "created_at",
@@ -238,17 +225,14 @@ param:id
             "id": "id",
             "hotel_name": "hotel_name",
             "description": "description",
-<<<<<<< HEAD
             "price": "price",
             "district": "district",
             "email": "email",
-=======
             "average_price": "Average price for a room in the hotel",
             "district": "district",
             "email": "email",
             "web": "web address",
             "number_of_rooms": "Total number of rooms in the hotel",
->>>>>>> develop
             "address": "address",
             "contact": "contact",
             "created_at": "created_at",
@@ -258,15 +242,172 @@ param:id
 }
 </code>
 </pre>
+<hr>
+<h3>Rooms API</h3>
+<p>We are going to use this Api while listing all Rooms, get a single room, add a room and also delete a room</p>
+<h4>6.Get all Rooms </h4>
+<pre>
+<code>
+url: https://zurri-booking.herokuapp.com/api/rooms/
+method: GET
+</code>
+</pre>
+<p>Response</p>
+<pre>
+<code>
+  {
+    "success": true,
+    "data": {
+        "rooms": [
+            {
+                "id": "id",
+                "hotel_id": "hotel_id",
+                "name": "roomname",
+                "description": "description",
+                "minimum_stay_night": "minimum_stay_night",
+                "price": "price",
+                "max_number_of_guests": "max_number_of_guests",
+                "created_at": "created_at",
+                "updated_at": "updated_at"
+            },
+        ],
+        "count": "totalrooms"
+    }
+}
+</code>
+</pre>
+<h4>7.Get  a single Room </h4>
+<pre>
+<code>
+url: https://zurri-booking.herokuapp.com/api/rooms/{id}
+method: GET
+param:id
+</code>
+</pre>
+<p>Response</p>
+<pre>
+<code>
+  {
+    "success": true,
+    "data": {
+        "rooms":
+            {
+                "id": "id",
+                "hotel_id": "hotel_id",
+                "name": "roomname",
+                "description": "description",
+                "minimum_stay_night": "minimum_stay_night",
+                "price": "price",
+                "max_number_of_guests": "max_number_of_guests",
+                "created_at": "created_at",
+                "updated_at": "updated_at"
+            }
+    }
+}
+</code>
+</pre>
+<h4>8.Add a single Room </h4>
+<p>Here we have used a one to many relationship where by we shall be adding a room to a particular hotel, the room will pick the hotel_id while adding it  </p>
+<pre>
+<code>
+url: https://zurri-booking.herokuapp.com/api/hotels/room/{hotel_id}
+method: POST
+param: hotel_id
+</code>
+</pre>
+<p>Response</p>
+<pre>
+<code>
+  {
+    "success": true,
+    "data": {
+        "message": "room added successfully",
+        "room": {
+            "hotel_id": "hotel_id",
+            "name": "name",
+            "description":  "description",
+            "price": "price",
+            "minimum_stay_night": "minimum_stay_night",
+            "max_number_of_guests": "max_number_of_guests",
+            "updated_at":  "updated_at",
+            "created_at": "created_at",
+            "id": "room_id"
+        }
+    }
+}
+
+
+</code>
+</pre>
+<h4>9. Update single Room </h4>
+<p>We have used a one to many relationship where by we shall be updating a room to a particular hotel, the room will pick the hotel_id while updating it  </p>
+<p> </p>
+<pre>
+<code>
+url: https://zurri-booking.herokuapp.com/api/hotels/room/{hotel_id}
+method: PUT
+param: hotel_id
+</code>
+</pre>
+<p>Response</p>
+<pre>
+<code>
+  {
+    "success": true,
+    "data": {
+        "message": "Room updated successfully",
+        "room": {
+            "hotel_id": "hotel_id",
+            "name": "name",
+            "description":  "description",
+            "price": "price",
+            "minimum_stay_night": "minimum_stay_night",
+            "max_number_of_guests": "max_number_of_guests",
+            "updated_at":  "updated_at",
+            "created_at": "created_at",
+            "id": "room_id"
+        }
+    }
+}
+</code>
+</pre>
+<h4>10.Delete single Room </h4>
+<pre>
+<code>
+url: https://zurri-booking.herokuapp.com/api/rooms/{id}
+method: DELETE
+param: room_id
+</code>
+</pre>
+<p>Response</p>
+<pre>
+<code>
+  {
+    "success": true,
+    "data": {
+        "message": "Room successfully deleted",
+        "room": {
+            "id": "id",
+            "hotel_id": "hotel_id",
+            "name": "name",
+            "description":  "description",
+            "price": "price",
+            "minimum_stay_night": "minimum_stay_night",
+            "max_number_of_guests": "max_number_of_guests",
+            "created_at": "created_at",
+            "updated_at":  "updated_at",
+        }
+    }
+}
+</code>
+</pre>
 </div>
 </div>
 </section>
  </main>
-<<<<<<< HEAD
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js" integrity="sha512-tHQeqtcNWlZtEh8As/4MmZ5qpy0wj04svWFK7MIzLmUVIzaHXS8eod9OmHxyBL1UET5Rchvw7Ih4ZDv5JojZww==" crossorigin="anonymous"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 </html>
-=======
 </x-app>
->>>>>>> develop
+
