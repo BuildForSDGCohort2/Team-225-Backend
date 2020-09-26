@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth:api'], function() {
 	Route::post('hotels', 'API\HotelsController@createHotel');
 	Route::put('hotels/{id}', 'API\HotelsController@updateHotel');
 	Route::delete('hotels/{id}','API\HotelsController@deleteHotel');
+
     // Images operations
     Route::post('/hotels/add-images/{hotel}', 'API\ImageController@addHotelImages');
 //rooms crud routes
@@ -46,7 +47,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::delete('rooms/{id}', 'API\RoomsController@deleteRoom');
     Route::put('/hotels/room/{room}', 'API\RoomsController@UpdateRoom');
 });
-    
+
 
 //Flights Search route
 Route::get('/flights', 'API\FlightsController@getFlights');

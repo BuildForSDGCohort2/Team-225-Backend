@@ -14,7 +14,6 @@ class HotelsController extends Controller
     public function getAllHotels()
     {
         try {
-
              $hotels = Hotel::all();
 
              return response()->json([
@@ -41,7 +40,7 @@ class HotelsController extends Controller
     {
 
       try {
-          $hotel = Hotel::whereid($hotelid)->firstOrFail();
+          $hotel = Hotel::with('rooms')->whereid($hotelid)->firstOrFail();
 
           if($hotel) {
                 return response()->json([
@@ -107,13 +106,13 @@ class HotelsController extends Controller
                 ]
             ], 500);
        }
-        
+
     }
 
     //update hotel
     public function updateHotel(Request $request, $hotelid)
     {
-     
+
         try {
             $hotel = Hotel::whereid($hotelid)->firstOrFail();
             $validatedData = $this->validator($request);
@@ -144,7 +143,7 @@ class HotelsController extends Controller
                     'hotel' => $hotel
                 ]
             ]);
-            
+
         } catch (\Exception $e) {
             Log::error('An error occured while updating hotel'. $e->getMessage());
             return response()->json([
@@ -178,12 +177,12 @@ class HotelsController extends Controller
                 ]
             ], 500);
         }
-         
+
     }
 
     private function validator(Request $request) {
 
-    
+
         return Validator::make($request->only(['hotel_name', 'description', 'average_price', 'address', 'district', 'contact', 'email']), [
 
             'hotel_name' => 'required',
