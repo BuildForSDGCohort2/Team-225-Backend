@@ -114,11 +114,9 @@ param:
             "id": "hotel_id",
             "hotel_name": "hotel name",
             "description": "hotel description",
-
             "price": "price",
             "district": "district",
             "email": "email",
-
             "average_price": "Average price for a room in the hotel",
             "district": "district",
             "email": "email",
@@ -127,13 +125,24 @@ param:
             "address": "address",
             "contact": "contact",
             "created_at": "created_at",
-            "updated_at": "updated_at"
+            "updated_at": "updated_at",
+            "attachment": null,
+            "images": [
+                    {
+                        "id": 1,
+                        "title": "-hotel-cover",
+                        "url": "https://res.cloudinary.com/zurri-cloud/image/upload/v1599657026/hotels/rpd7ebj1l4uhjadv9mai.jpg",
+                        "imageable_id": 1,
+                        "imageable_type": "App\\Hotel",
+                        "created_at": "2020-09-09T13:06:52.000000Z",
+                        "updated_at": "2020-09-09T13:06:52.000000Z"
+                    }
+            ]
         },
 
          "count": "number of hotels"
 ]
 }
-</pre>
 </code>
 </pre>
 <h4>3.Show a single hotel </h4>
@@ -147,30 +156,39 @@ param:id
 <p>Response</p>
 <pre>
 <code>
-    {
+{
     "success": true,
     "data": {
-        "id": 7,
-        "hotel_name": "hotel_name",
-        "description": "description",
-        "price":  "price",
-        "district": "district",
-        "email": "email",
-        "average_price": "Average price for a room in the hotel",
-        "district": "district",
-        "email": "email",
-        "web": "web address",
-        "number_of_rooms": "Total number of rooms in the hotel",
-
-        "address": "address",
-        "contact": "contact",
-        "created_at": "created_at",
-        "updated_at": "updated_at"
+        "id": 1,
+        "hotel_name": "sheraton",
+        "description": "Some odd description",
+        "average_price": 10000,
+        "district": "jinja",
+        "email": "sheton@hotels.com",
+        "web": null,
+        "contact": "08001234556",
+        "address": "source",
+        "number_of_rooms": null,
+        "created_at": "2020-09-09T12:59:15.000000Z",
+        "updated_at": "2020-09-09T12:59:15.000000Z",
+        "attachment": null,
+        "images": [         // an array of hotel cover images
+            {
+                "id": 1,
+                "title": "-hotel-cover",
+                "url": "https://res.cloudinary.com/zurri-cloud/image/upload/v1599657026/hotels/rpd7ebj1l4uhjadv9mai.jpg",
+                "imageable_id": 1,
+                "imageable_type": "App\\Hotel",
+                "created_at": "2020-09-09T13:06:52.000000Z",
+                "updated_at": "2020-09-09T13:06:52.000000Z"
+            }
+        ],
+        "rooms": [] // an array of the rooms belonging to the hotel
     }
 }
 </code>
 </pre>
-<h4>4.Update  a single hotel </h4>
+<h4>4.Update a single hotel </h4>
 <pre>
 <code>
 url: https://zurri-booking.herokuapp.com/api/hotels/{id}

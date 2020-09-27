@@ -8,9 +8,10 @@ class Hotel extends Model
 {
     //
     protected $guarded = [];
+    protected $with = ['images'];
 
     public function rooms() {
-        return $this->hasMany('App\Rooms');
+        return $this->hasMany('App\Room');
     }
 
     public function images() {
