@@ -30,10 +30,11 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'auth'], function() {
     Route::get('/logout', 'API\LogoutController@logout');
 });
 
-Route::group(['middleware' => 'auth:api'], function() {
 //hotels crud routes
-    Route::get('hotels', 'API\HotelsController@getAllHotels');
-	Route::get('hotels/{id}', 'API\HotelsController@getHotel');
+Route::get('hotels', 'API\HotelsController@getAllHotels');
+Route::get('hotels/{id}', 'API\HotelsController@getHotel');
+
+Route::group(['middleware' => 'auth:api'], function() {
 	Route::post('hotels', 'API\HotelsController@createHotel');
 	Route::put('hotels/{id}', 'API\HotelsController@updateHotel');
 	Route::delete('hotels/{id}','API\HotelsController@deleteHotel');
