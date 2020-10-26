@@ -29,7 +29,8 @@ class HotelsController extends Controller
             return response()->json([
                 'success'=>false,
                 'data'=>[
-                    'errors'=>'Failed to load hotels, try again'
+                    'errors'=>'Failed to load hotels, try again',
+                    'err' => $e->getMessage()
                 ]
             ], 500);
         }
