@@ -59,6 +59,13 @@ class LoginController extends Controller
         }
     }
 
+    public function loginRequired() {
+        return response()->json([
+            'success' => false,
+            'message' => 'login required'
+        ], 400);
+    }
+
     /**
      * Validate request
      *

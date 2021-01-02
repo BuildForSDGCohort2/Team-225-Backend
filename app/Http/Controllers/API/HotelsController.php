@@ -14,22 +14,21 @@ class HotelsController extends Controller
     public function getAllHotels()
     {
         try {
-             $hotels = Hotel::all();
+            $hotels = Hotel::all();
 
-             return response()->json([
+            return response()->json([
                 'success' => true,
                 'data' => [
                     'hotels' => $hotels,
                     'count' => $hotels->count()
                 ]
-             ]);
-
+            ]);
         } catch (\Exception $e) {
-            Log::error('An error occurred while loading hotels' .$e->getMessage());
+            Log::error('An error occurred while loading hotels' . $e->getMessage());
             return response()->json([
-                'success'=>false,
-                'data'=>[
-                    'errors'=>'Failed to load hotels, try again'
+                'success' => false,
+                'data' => [
+                    'errors' => 'Failed to load hotels, try again'
                 ]
             ], 500);
         }
@@ -39,15 +38,15 @@ class HotelsController extends Controller
     public function getHotel($hotelid)
     {
 
-      try {
-          $hotel = Hotel::with('rooms')->whereid($hotelid)->firstOrFail();
+        try {
+            $hotel = Hotel::with('rooms')->whereid($hotelid)->firstOrFail();
 
-          if($hotel) {
+            if ($hotel) {
                 return response()->json([
                     'success' => true,
                     'data' => $hotel
                 ]);
-          }
+            }
 
             return response()->json([
                 'success' => false,
@@ -55,58 +54,54 @@ class HotelsController extends Controller
                     'errors' => 'Hotel not found'
                 ]
             ]);
-
-      } catch (\Exception $e) {
-          Log::error('An error occurred while loading hotel'. $e->getMessage());
-          return response()->json([
-                'success'=>false,
-                'data'=>[
+        } catch (\Exception $e) {
+            Log::error('An error occurred while loading hotel' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'data' => [
                     'errors' => 'Hotel not found'
                 ]
             ], 500);
-      }
-
+        }
     }
 
     //create a new hotel
     public function createHotel(Request $request)
     {
-       try {
-           $validatedData = $this->validator($request);
+        try {
+            $validatedData = $this->validator($request);
 
-         if ($validatedData->fails()) {
+            if ($validatedData->fails()) {
 
+                return response()->json([
+                    'success' => false,
+                    'data' => [
+                        'message' => 'failed to create hotel',
+                        'errors' => $validatedData->errors()
+                    ]
+                ], 400);
+            };
+
+            $formdata = $validatedData->validated();
+
+            $hotel = Hotel::create($formdata);
+
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'message' => 'hotel created successfully',
+                    'hotel' => $hotel,
+                ]
+            ]);
+        } catch (\Exception $e) {
+            Log::error('An error occurred while creating hotel' . $e->getMessage());
             return response()->json([
                 'success' => false,
                 'data' => [
-                    'message' => 'failed to create hotel',
-                    'errors' => $validatedData->errors()
-                ]
-                ], 400);
-         };
-
-         $formdata = $validatedData->validated();
-
-        $hotel = Hotel::create($formdata);
-
-        return response()->json([
-            'success' => true,
-            'data' => [
-                'message' => 'hotel created successfully',
-                'hotel' => $hotel,
-            ]
-        ]);
-
-       } catch (\Exception $e) {
-           Log::error('An error occurred while creating hotel'.$e->getMessage());
-           return response()->json([
-                'success' => false,
-                'data' => [
-                    'errors'=>'Creating hotel failed please try again'
+                    'errors' => 'Creating hotel failed please try again'
                 ]
             ], 500);
-       }
-
+        }
     }
 
     //update hotel
@@ -124,7 +119,7 @@ class HotelsController extends Controller
                         'message' => 'failed to update hotel',
                         'errors' => $validatedData->errors()
                     ]
-                    ], 400);
+                ], 400);
             }
 
             $hotel->hotel_name = $request->get('hotel_name');
@@ -143,9 +138,8 @@ class HotelsController extends Controller
                     'hotel' => $hotel
                 ]
             ]);
-
         } catch (\Exception $e) {
-            Log::error('An error occured while updating hotel'. $e->getMessage());
+            Log::error('An error occured while updating hotel' . $e->getMessage());
             return response()->json([
                 'success' => false,
                 'data' => [
@@ -153,15 +147,14 @@ class HotelsController extends Controller
                 ]
             ], 500);
         }
-
     }
     //delete hotel
     public function deleteHotel($hotelid)
     {
         try {
-             $hotel = Hotel::findOrFail($hotelid);
-             $hotel->delete();
-             return response()->json([
+            $hotel = Hotel::findOrFail($hotelid);
+            $hotel->delete();
+            return response()->json([
                 'success' => true,
                 'data' => [
                     'message' => 'hotel successfully deleted',
@@ -169,7 +162,7 @@ class HotelsController extends Controller
                 ]
             ]);
         } catch (\Exception $e) {
-            Log::error('An error occured while deleting hotel' .$e->getMessage());
+            Log::error('An error occured while deleting hotel' . $e->getMessage());
             return response()->json([
                 'success' => false,
                 'data' => [
@@ -177,10 +170,10 @@ class HotelsController extends Controller
                 ]
             ], 500);
         }
-
     }
 
-    private function validator(Request $request) {
+    private function validator(Request $request)
+    {
 
 
         return Validator::make($request->only(['hotel_name', 'description', 'average_price', 'address', 'district', 'contact', 'email']), [
@@ -193,6 +186,5 @@ class HotelsController extends Controller
             'address' => 'required',
             'contact' => 'min:10',
         ]);
-
     }
 }

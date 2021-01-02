@@ -17,4 +17,10 @@ class Hotel extends Model
     public function images() {
         return $this->morphMany('App\Image', 'imageable');
     }
+
+    public function bookings()
+    {
+        return $this->hasMany('App\Booking');
+    }
+
 }
