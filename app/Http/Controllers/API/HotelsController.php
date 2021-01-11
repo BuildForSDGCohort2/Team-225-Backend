@@ -14,7 +14,18 @@ class HotelsController extends Controller
     public function getAllHotels()
     {
         try {
-            $hotels = Hotel::all();
+            $hotels = Hotel::all()->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'hotel_name' => $item->hotel_name,
+                    'hotel_name' => $item->hotel_name,
+                    'description' => $item->description,
+                    'average_price' => $item->average_price,
+                    'district' => $item->district,
+                    'address' => $item->address,
+                    'image' => $item->images->first()
+                ];
+            });
 
             return response()->json([
                 'success' => true,
@@ -37,7 +48,6 @@ class HotelsController extends Controller
     //get a single hotel
     public function getHotel($hotelid)
     {
-
         try {
             $hotel = Hotel::with('rooms')->whereid($hotelid)->firstOrFail();
 

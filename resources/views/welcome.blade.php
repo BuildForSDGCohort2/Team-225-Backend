@@ -106,42 +106,30 @@ param:
 <p>Response</p>
 <pre>
 <code>
-        {
-"success": true,
-"data": {
-    "hotels": [
-        {
-            "id": "hotel_id",
-            "hotel_name": "hotel name",
-            "description": "hotel description",
-            "price": "price",
-            "district": "district",
-            "email": "email",
-            "average_price": "Average price for a room in the hotel",
-            "district": "district",
-            "email": "email",
-            "web": "web address",
-            "number_of_rooms": "Total number of rooms in the hotel",
-            "address": "address",
-            "contact": "contact",
-            "created_at": "created_at",
-            "updated_at": "updated_at",
-            "attachment": null,
-            "images": [
-                    {
-                        "id": 1,
-                        "title": "-hotel-cover",
-                        "url": "https://res.cloudinary.com/zurri-cloud/image/upload/v1599657026/hotels/rpd7ebj1l4uhjadv9mai.jpg",
-                        "imageable_id": 1,
-                        "imageable_type": "App\\Hotel",
-                        "created_at": "2020-09-09T13:06:52.000000Z",
-                        "updated_at": "2020-09-09T13:06:52.000000Z"
-                    }
-            ]
-        },
-
-         "count": "number of hotels"
-]
+{
+    "success": true,
+    "data": {
+        "hotels": [
+            {
+                "id": 1,
+                "hotel_name": "sheraton",
+                "description": "Some odd description",
+                "average_price": 10000,
+                "district": "jinja",
+                "address": "source",
+                "image": {
+                    "id": 1,
+                    "title": "-hotel-cover",
+                    "url": "https://res.cloudinary.com/zurri-cloud/image/upload/v1599657026/hotels/rpd7ebj1l4uhjadv9mai.jpg",
+                    "imageable_id": 1,
+                    "imageable_type": "App\\Hotel",
+                    "created_at": "2020-09-09T13:06:52.000000Z",
+                    "updated_at": "2020-09-09T13:06:52.000000Z"
+                }
+            },
+        ],
+        "count": 'number of hotels returned'
+    }
 }
 </code>
 </pre>
